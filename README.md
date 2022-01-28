@@ -1,2 +1,2 @@
 # Scripts
- Scripts for various CS modules
+This repository contains scripts for various CS modules for computing calculations and algorithms.
