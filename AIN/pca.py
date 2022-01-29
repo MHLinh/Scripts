@@ -1,3 +1,5 @@
+# Solution provided in 6CCS3AIN at KCL
+
 import matplotlib.pyplot as plt
 import numpy as np
 
