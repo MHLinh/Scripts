@@ -4,11 +4,11 @@ import math
 # using the Extended Euclid's algorithm.
 # Parameters:
 #   a, b - integers
-def extEuclid(a, b):
+def ext_euclid(a, b):
   if b == 0:
     return (a, 1, 0)
   else:
-    (d1, x1, y1) = extEuclid(b, a % b)
+    (d1, x1, y1) = ext_euclid(b, a % b)
     q = math.floor(a / b)
     (d, x, y) = (d1, y1, x1 - q * y1)
     return (d, x, y)
@@ -64,7 +64,7 @@ def cheat(v, r, n):
   check_0a = check_a(y_0, n)
   check_0b = check_b(x_0, v, 0, n)
 
-  v_inverse = extEuclid(n, v)[2]
+  v_inverse = ext_euclid(n, v)[2]
   x_1= (r**2 * v_inverse) % n
   y_1 = r % n
   check_1a = check_a(y_1, n)

@@ -6,33 +6,33 @@ from tabulate import tabulate
 # using the Extended Euclid's algorithm.
 # Parameters:
 #   a, b - integers
-def extEuclid(a, b):
+def ext_euclid(a, b):
   if b == 0:
     print(a, b, "-", a, 1, 0)
     return (a, 1, 0)
   else:
-    (d1, x1, y1) = extEuclid(b, a % b)
+    (d1, x1, y1) = ext_euclid(b, a % b)
     q = math.floor(a / b)
     print(d1, x1, y1)
     (d, x, y) = (d1, y1, x1 - q * y1)
     print(a, b, q, d, x, y)
     return (d, x, y)
 
-# extEuclid(99, 78)
+# ext_euclid(99, 78)
 
 # A function for computing x and y such that gcd(a,b) = (x*a) + (y*b),
 # using the Extended Euclid's algorithm, but with passed in list to store data.
-# Helper function for extEuclidTable.
+# Helper function for ext_euclid_table.
 # Parameters:
 #   a, b - integers
 #   data - list of integers
-def extEuclidData(a, b, data):
+def ext_euclid_data(a, b, data):
   if b == 0:
     row = [a, b, "-", a, 1, 0]
     data.append(row)
     return (a, 1, 0)
   else:
-    (d1, x1, y1) = extEuclidData(b, a % b, data)
+    (d1, x1, y1) = ext_euclid_data(b, a % b, data)
     q = math.floor(a / b)
     (d, x, y) = (d1, y1, x1 - q * y1)
     row = [a, b, q, d, x, y]
@@ -44,11 +44,11 @@ def extEuclidData(a, b, data):
 # Prints out a formatted table.
 # Parameters:
 #   a, b - integers
-def extEuclidTable(a, b):
+def ext_euclid_table(a, b):
   data = [] 
   headers = ["a", "b", "[a/b]", "d", "x", "y"]
 
-  extEuclidData(a,b, data)
+  ext_euclid_data(a,b, data)
   data.reverse()
 
   print()
@@ -63,4 +63,4 @@ def extEuclidTable(a, b):
   else:
     print(f"d = y = {y}")
 
-extEuclidTable(72,23)
+ext_euclid_table(72,23)
