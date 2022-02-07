@@ -78,7 +78,7 @@ def print_table(data, centers):
 # A function for computing the new center for a cluster.
 # Parameters:
 #   clusters - list of points belonging to a cluster
-def calculate_clusters(clusters):
+def calculate_centers(clusters):
   centers = []
   for cluster in clusters:
     total_x = 0
@@ -109,7 +109,7 @@ def clustering_iterations(points, initial_centers, dist_func, iterations):
     print(f"Iteration: {i+1}")
     # print("Iteration: " + str(i+1))
     data, clusters = calculate_clusters(points, centers, dist_func)
-    new_centers = calculate_clusters(clusters)
+    new_centers = calculate_centers(clusters)
     print_table(data, centers)
     print("New centers")
     for center in new_centers:
@@ -162,24 +162,29 @@ def k_means_pp(points, initial_center, dist_func, k, iterations):
 # ]
 
 arr = [
-  Point(1,2,1),
-  Point(1,1,0),
-  Point(2,0,1),
-  Point(1,-2,0),
-  Point(1,0,0),
-  Point(2,-3,0),
+  Point(5,8),
+  Point(6,7),
+  Point(6,4),
+  Point(5,7),
+  Point(5,5),
+  Point(6,5),
+  Point(1,7),
+  Point(7,5),
+  Point(6,5),
+  Point(6,7)
 ]
 
 initial_centers = [
-  Point(2,2,0),
-  Point(2, 0.5, 0)
+  Point(7,5),
+  Point(9,7),
+  Point(9,1)
 ]
 
-# print("Manhattan K-Median")
-# clustering_iterations(arr, initial_centers, manhattan, 3)
+print("Manhattan K-Median")
+clustering_iterations(arr, initial_centers, manhattan, 3)
 
-print("Euclidean K-Means")
-clustering_iterations(arr, initial_centers, euclidean, 3)
+# print("Euclidean K-Means")
+# clustering_iterations(arr, initial_centers, euclidean, 3)
 
 # print("K-Means++")
 # k_means_pp(initial_centers[0], arr, euclidean, 2, 3)
